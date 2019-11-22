@@ -13,12 +13,19 @@ public class EvaluationService {
 	 * @param string
 	 * @return
 	 */
-	public String reverse(String string) {
+	public String reverse(String Example) {
+		String s = Example;
+		String temp = "";
+		int length = s.length();
 		
-		return "";
+	for(int i = length -1; i>=0; i--) {
+		temp = temp + s.charAt(i);
+	}
+	System.out.println(temp);
+		return temp;
 	}
 
-	/**
+	/*
 	 * 2. Convert a phrase to its acronym. Techies love their TLA (Three Letter
 	 * Acronyms)! Help generate some jargon by writing a program that converts a
 	 * long name like Portable Network Graphics to its acronym (PNG).
