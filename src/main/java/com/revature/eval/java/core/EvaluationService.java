@@ -17,11 +17,11 @@ public class EvaluationService {
 		String s = Example;
 		String temp = "";
 		int length = s.length();
-		
-	for(int i = length -1; i>=0; i--) {
-		temp = temp + s.charAt(i);
-	}
-	System.out.println(temp);
+
+		for (int i = length - 1; i >= 0; i--) {
+			temp = temp + s.charAt(i);
+		}
+		// System.out.println(temp);
 		return temp;
 	}
 
@@ -31,11 +31,31 @@ public class EvaluationService {
 	 * long name like Portable Network Graphics to its acronym (PNG).
 	 * 
 	 * @param phrase
+	 * 
 	 * @return
 	 */
 	public String acronym(String phrase) {
+		StringBuilder sb = new StringBuilder();
+		String[] array = phrase.split(" |-");
+
+		/*
+		 * split phrase into an array for loop through array to find index 0 in each
+		 * word save index 0 into var append that var to acronym to string builder
+		 * convert string builder back into a string toUpperCase
+		 */
+
+		for (int i = 0; i < array.length; i++) {
+			char firstLetter = array[i].charAt(0);
+			sb.append(firstLetter);
+		}
+
+		String acronym = sb.toString();
+		acronym = acronym.toUpperCase();
+
+		// System.out.println(acronym);
+
 		// TODO Write an implementation for this method declaration
-		return null;
+		return acronym;
 	}
 
 	/**
@@ -88,18 +108,49 @@ public class EvaluationService {
 		}
 
 		public boolean isEquilateral() {
+			if (sideOne == sideTwo && sideThree == sideTwo) {
+				return true;
+			} else {
+				return false;
+			}
+			/*
+			 * if side 1 = side 2 && side 3 return true
+			 */
 			// TODO Write an implementation for this method declaration
-			return false;
+
 		}
 
 		public boolean isIsosceles() {
+			if ((sideOne == sideTwo) && (sideThree != sideOne) && (sideTwo != sideThree)) {
+				return true;
+			} else if ((sideOne == sideThree) && (sideTwo != sideOne) && (sideTwo != sideThree)) {
+				return true;
+
+			} else if ((sideTwo == sideThree) && (sideTwo != sideOne) && (sideOne != sideThree)) {
+				return true;
+
+			} else {
+				return false;
+			}
+			/*
+			 * if side 1 = side 2 && side 3 return true
+			 */
 			// TODO Write an implementation for this method declaration
-			return false;
+
+			/*
+			 * if side 1 = side 2 && side 1 != side 3 | else
+			 */
+			// TODO Write an implementation for this method declaration
 		}
 
 		public boolean isScalene() {
+			if (sideOne == sideTwo || sideTwo == sideThree || sideOne == sideThree) {
+				return false;
+			} else {
+				return true;
+			}
 			// TODO Write an implementation for this method declaration
-			return false;
+
 		}
 
 	}
@@ -170,6 +221,10 @@ public class EvaluationService {
 	 * @return
 	 */
 	public Map<String, Integer> wordCount(String string) {
+		/*
+		 * for (int i = 0; i < array.length; i++) { char firstLetter =
+		 * array[i].charAt(0); sb.append(firstLetter); }
+		 */
 		// TODO Write an implementation for this method declaration
 		return null;
 	}
@@ -250,8 +305,41 @@ public class EvaluationService {
 	 * @return
 	 */
 	public String toPigLatin(String string) {
-		// TODO Write an implementation for this method declaration
+		String[] arr = string.split("");
+		System.out.println(arr[0]);
+		StringBuilder sb = new StringBuilder();
+		for (int i = 0; i < arr.length; i++) {
+			sb.append(arr[i]);
+		}
+
+		while (sb.charAt(0) != ('o') && sb.charAt(0) != ('i') && sb.charAt(0) != ('e') && sb.charAt(0) != ('a')
+				&& sb.charAt(0) != ('u')) {
+			char first = sb.charAt(0);
+			if (first == 'q') {
+				sb.append('q');
+				sb.append('u');
+				sb.deleteCharAt(0);
+				sb.deleteCharAt(0);
+
+			} else {
+				sb.deleteCharAt(0);
+				sb.append(first);
+			}
+			sb.append('a');
+			sb.append('y');
+
+		}
+		System.out.println(sb);
+		String igpay = new String(sb);
+		/*
+		 * StringBuilder =sbpig = new StringBuilder(); sbpig.append(arr[0]); for(int
+		 * i=1; i < arr.length; i++) { sbpig.append(" "); sbpig.append(arr[i]); } String
+		 * pig = new String(sbpig);
+		 */
 		return null;
+
+		// TODO Write an implementation for this method declaration
+
 	}
 
 	/**
