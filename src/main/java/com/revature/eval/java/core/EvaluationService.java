@@ -1,6 +1,7 @@
 package com.revature.eval.java.core;
 
 import java.time.temporal.Temporal;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -171,9 +172,65 @@ public class EvaluationService {
 	 * @return
 	 */
 	public int getScrabbleScore(String string) {
-		// TODO Write an implementation for this method declaration
-		return 0;
+		char[] one = { 'A', 'E', 'I', 'O', 'U', 'L', 'N', 'R', 'S', 'T' };
+		char[] two = { 'D', 'G' };
+		char[] three = { 'B', 'C', 'M', 'P' };
+		char[] four = { 'F', 'H', 'V', 'W', 'Y' };
+		char[] five = { 'K' };
+		char[] six = { 'J', 'X' };
+		char[] seven = { 'Q', 'Z' };
+
+		int score = 0;
+		string = string.toUpperCase();
+
+		for (int i = 0; i < string.length(); i++) {
+
+			for (int k = 0; k < one.length; k++) {
+				if (string.charAt(i) == one[k]) {
+					score++;
+				}
+			}
+			for (int k = 0; k < two.length; k++) {
+				if (string.charAt(i) == two[k]) {
+					score += 2;
+				}
+			}
+
+			for (int k = 0; k < three.length; k++) {
+				if (string.charAt(i) == three[k]) {
+					score += 3;
+				}
+			}
+
+			for (int k = 0; k < four.length; k++) {
+				if (string.charAt(i) == four[k]) {
+					score += 4;
+				}
+			}
+
+			for (int k = 0; k < five.length; k++) {
+				if (string.charAt(i) == five[k]) {
+					score += 5;
+				}
+			}
+
+			for (int k = 0; k < six.length; k++) {
+				if (string.charAt(i) == six[k]) {
+					score += 8;
+				}
+			}
+
+			for (int k = 0; k < seven.length; k++) {
+				if (string.charAt(i) == seven[k]) {
+					score += 10;
+				}
+			}
+		}
+		System.out.println(score);
+		return score;
 	}
+
+	// TODO Write an implementation for this method declaration
 
 	/**
 	 * 5. Clean up user-entered phone numbers so that they can be sent SMS messages.
@@ -305,39 +362,44 @@ public class EvaluationService {
 	 * @return
 	 */
 	public String toPigLatin(String string) {
-		String[] arr = string.split("");
+		String[] arr = string.split(" ");
 		System.out.println(arr[0]);
-		StringBuilder sb = new StringBuilder();
+
 		for (int i = 0; i < arr.length; i++) {
-			sb.append(arr[i]);
-		}
+			StringBuilder sb = new StringBuilder(arr[i]);
 
-		while (sb.charAt(0) != ('o') && sb.charAt(0) != ('i') && sb.charAt(0) != ('e') && sb.charAt(0) != ('a')
-				&& sb.charAt(0) != ('u')) {
-			char first = sb.charAt(0);
-			if (first == 'q') {
-				sb.append('q');
-				sb.append('u');
-				sb.deleteCharAt(0);
-				sb.deleteCharAt(0);
+			while (sb.charAt(0) != ('o') && sb.charAt(0) != ('i') && sb.charAt(0) != ('e') && sb.charAt(0) != ('a')
+					&& sb.charAt(0) != ('u')) {
+				char first = sb.charAt(0);
+				if (first == 'q') {
+					sb.append('q');
+					sb.append('u');
+					sb.deleteCharAt(0);
+					sb.deleteCharAt(0);
 
-			} else {
-				sb.deleteCharAt(0);
-				sb.append(first);
+				} else {
+					sb.deleteCharAt(0);
+					sb.append(first);
+				}
 			}
 			sb.append('a');
 			sb.append('y');
+			arr[i] = new String(sb);
+		}
+		StringBuilder sb2 = new StringBuilder();
+		sb2.append(arr[0]);
+		for (int i = 1; i < arr.length; i++) {
+			sb2.append(" " + arr[i]);
 
 		}
-		System.out.println(sb);
-		String igpay = new String(sb);
+		String answer = new String(sb2);
+		return answer;
+
 		/*
 		 * StringBuilder =sbpig = new StringBuilder(); sbpig.append(arr[0]); for(int
 		 * i=1; i < arr.length; i++) { sbpig.append(" "); sbpig.append(arr[i]); } String
 		 * pig = new String(sbpig);
 		 */
-		return null;
-
 		// TODO Write an implementation for this method declaration
 
 	}
@@ -430,9 +492,23 @@ public class EvaluationService {
 	 * @param i
 	 * @return
 	 */
-	public int calculateNthPrime(int i) {
-		// TODO Write an implementation for this method declaration
-		return 0;
+	public int calculateNthPrime(int i){
+		List<Integer> l = new ArrayList<>(); // import arraylist
+		for (int x = 2; l.size() < i; x++) { // list .size .length for Arrays
+			int count = 0;
+
+			for (int y = 2; y < x; y++) {
+				if (x % y == 0) {
+					count++;
+				}
+			}
+
+			if (count == 0) {
+				l.add(x);
+			}
+
+		}
+		return l.get(i - 1);
 	}
 
 	/**

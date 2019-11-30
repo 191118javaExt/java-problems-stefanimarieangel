@@ -1,52 +1,30 @@
 package com.revature.eval.java.core.stefanitest;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Driver {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-		toPigLatin("quick brown fox");
+		System.out.println(calculateNthPrime(2));
 	}
 
-	public static String toPigLatin(String string) {
-		String[] arr = string.split(" ");
-		System.out.println(arr[0]);
-		char first;
+	public static int calculateNthPrime(int i) {
+		List<Integer> l = new ArrayList<>(); // import arraylist
+		for (int x = 2; l.size() < i; x++) { // list .size .length for Arrays
+			int count = 0;
 
-		for (int i = 0; i < arr.length; i++) {
-			StringBuilder sb = new StringBuilder(arr[i]);
-
-			while (sb.charAt(0) != ('o') && sb.charAt(0) != ('i') && sb.charAt(0) != ('e') && sb.charAt(0) != ('a')
-					&& sb.charAt(0) != ('u')) {
-				if (sb.charAt(0) == 'q') {
-					sb.append('q');
-					sb.append('u');
-					sb.deleteCharAt(0);
-					sb.deleteCharAt(0);
-
-				} else {
-					first = sb.charAt(0); // first = p <-- pig
-					sb.deleteCharAt(0); // deleting p --> ig
-					sb.append(first); // first == p --> igp
-					
+			for (int y = 2; y < x; y++) {
+				if (x % y == 0) {
+					count++;
 				}
-				
-				
-				if(sb.charAt(0) == ('o') && sb.charAt(0) == ('i') && sb.charAt(0 ) == ('e') && sb.charAt(0) == ('a')
-						&& sb.charAt(0) == ('u')) {
-					if(sb.charAt(pig))
-				}
-				sb.append('a');
-				sb.append('y');
-
 			}
-		}
-		/*
-		 * StringBuilder =sbpig = new StringBuilder(); sbpig.append(arr[0]); for(int
-		 * i=1; i < arr.length; i++) { sbpig.append(" "); sbpig.append(arr[i]); } String
-		 * pig = new String(sbpig);
-		 */
-		return null;
 
-		// TODO Write an implementation for this method declaration
+			if (count == 0) {
+				l.add(x);
+			}
+
+		}
+		return l.get(i - 1);
 	}
 }
